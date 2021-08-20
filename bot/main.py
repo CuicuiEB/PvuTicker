@@ -8,7 +8,7 @@ client = commands.Bot(command_prefix=";")
 slash = SlashCommand(client, sync_commands=True)
 
 coingecko = "https://api.coingecko.com/api/v3/simple/price?ids=plant-vs-undead-token&vs_currencies=usd,idr,bnb"
-WAIT_DURATION = int(os.environ['WAIT_DURATION'])
+WAIT_DURATION = int(30000)
 TOKEN = os.environ['DISCORD_TOKEN']
 
 @client.event
@@ -47,6 +47,6 @@ async def taskUpdateActivity():
         activityStatus = random.choice(["{:,}".format(round(getPvuPerIDR())) + " IDR", f"{getPvuPerBNB()} BNB"])
 
         await client.change_presence(activity=discord.Activity(type=discord.ActivityType.watching, name=activityStatus))
-        await asyncio.sleep(WAIT_DURATION)
+        await asyncio.sleep(30000)
 
 client.run(TOKEN)
